@@ -97,3 +97,60 @@ console.log(`
     ${jours.toString().padStart(2, '0')}:${heures.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondes.toString().padStart(2, '0')}`
 )
 
+// operateurs unaires
+
+let v1 = 42
+v1++ // v1 = v1 + 1
+console.log(v1) // 43
+v1+=4 // v1 = v1 + 4
+console.log(v1) // 47
+v1-- // v1 = v1 - 1
+console.log(v1) // 46
+v1-=6 // v1 = v1 - 6
+console.log(v1) // 40
+v1/=2 // v1 = v1 / 2 => 20
+v1**=2 // v1 = v1 ** 2 => 400
+console.log(v1) // 400
+
+console.log(++v1) // 401
+console.log(v1++) // 401
+console.log(v1) // 402
+
+let a = 42
+let b = 5
+console.log((a-- + b) + a) // 88
+
+// operateurs logiques
+// négation
+console.log(!false) // true
+
+console.log(45 < 2) // false
+
+console.log(42 == 42) // true
+console.log('42' == 42) // true
+
+console.log(0 == false) // true
+
+console.log('42' === 42) // false
+console.log(0 === false) // false
+
+// conversion string -> nombre
+
+let v2 = '42'
+console.log(v2 + 17) // 4217
+console.log(parseInt(v2) + 17) // 59
+console.log(+v2 + 17) // 59
+
+let v3 = 'Khun'
+console.log(parseInt(v3)) // NaN
+
+let v4 = '17Khun'
+console.log(parseInt(v4)) // 17
+
+let v5 = 42
+// toString() permet de convertir nimporte quoi en string
+console.log(v5.toString() + 1)
+
+let pi = 3.1415
+console.log(pi.toFixed(2)) // '3.14'
+
