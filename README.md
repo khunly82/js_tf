@@ -1,67 +1,152 @@
 ﻿# JavaScript - Cours de base
 
-## Objectif général
-
-Découvrir les bases du JavaScript en partant des premiers scripts, puis en abordant les variables, les types, les opérateurs, les dates et les structures conditionnelles.
-
-## Ordre du cours
+Ce dossier suit l’ordre logique du cours :
 
 1. [1_hello.js](./1_hello.js)
 2. [2_variables.js](./2_variables.js)
 3. [3_date.js](./3_date.js)
 4. [4_conditional_structure.js](./4_conditional_structure.js)
 
-## Programme
+## Chapitre 1 : Premier script
 
-### Chapitre 1 — Premier script
-Objectif : comprendre la syntaxe de base et la console.
+Le premier fichier montre comment afficher un message dans la console.
 
-Exemple :
 ```js
 console.log('hello world !!')
 ```
 
-### Chapitre 2 — Variables et types
-Objectif : stocker des données et savoir les manipuler.
+Cela permet de vérifier que le code s’exécute correctement et de commencer à comprendre le fonctionnement de JavaScript.
 
-Notions clés :
-- `let`
-- `typeof()`
-- `string`, `number`, `boolean`
-- `undefined`, `null`, `NaN`
+## Chapitre 2 : Les variables et les types
 
-### Chapitre 3 — Opérateurs et conversions
-Objectif : utiliser les opérateurs mathématiques et logiques, et convertir des valeurs.
+On apprend à stocker des valeurs dans des variables et à vérifier leur type.
 
-Notions clés :
-- `+`, `-`, `*`, `/`, `%`, `**`
-- `Math.round()`, `Math.floor()`, `Math.ceil()`
-- `parseInt()`, `toString()`, `toFixed()`
+```js
+let ma_super_variable
+console.log(ma_super_variable) // undefined
 
-### Chapitre 4 — Dates
-Objectif : travailler avec des dates et calculer des écarts.
+ma_super_variable = 42
+console.log(ma_super_variable) // 42
+```
 
-Notions clés :
-- `new Date()`
-- `getDate()`, `getMonth()`, `getFullYear()`, `getDay()`
-- `setDate()`
+### Types vus
 
-### Chapitre 5 — Structures conditionnelles
-Objectif : prendre une décision selon une condition.
+- `string`
+- `number`
+- `boolean`
+- `undefined`
+- `null`
+- `NaN`
 
-Notions clés :
-- `if`, `else if`, `else`
-- opérateur ternaire
-- `&&`, `||`, `??`
-- valeurs truthy / falsy
+### Exemple
 
-## À retenir
+```js
+let une_autre_variable = 'Khun LY'
+let un_booleen = true
 
-Ce cours permet de comprendre les bases de la programmation JavaScript et de poser les fondations de la logique de décision, du traitement de données et du calcul.
+console.log(typeof(une_autre_variable)) // string
+console.log(typeof(un_booleen)) // boolean
+```
 
-## Prochaine étape
+## Chapitre 3 : Opérateurs et conversions
+
+On a travaillé sur :
+
+- les opérations mathématiques : `+`, `-`, `*`, `/`, `%`, `**`
+- les arrondis : `Math.round()`, `Math.floor()`, `Math.ceil()`
+- les opérateurs d’incrémentation : `++`, `--`, `+=`, `-=`
+- les comparaisons : `==`, `===`, `<`, `>`
+- la conversion : `parseInt()`, `+variable`, `toString()`, `toFixed()`
+
+Exemple :
+
+```js
+let v2 = '42'
+console.log(parseInt(v2) + 17) // 59
+console.log(+v2 + 17) // 59
+
+let pi = 3.1415
+console.log(pi.toFixed(2)) // 3.14
+```
+
+## Chapitre 4 : Les dates
+
+Le fichier [3_date.js](./3_date.js) introduit l’objet `Date`.
+
+```js
+let date = new Date()
+console.log(date)
+console.log(date.toLocaleString('fr-BE'))
+```
+
+### Ce qu’on a appris
+
+- créer une date
+- récupérer le jour, le mois, l’année
+- modifier une date avec `setDate()`
+- calculer un écart en jours
+
+## Chapitre 5 : Les structures conditionnelles
+
+Le fichier [4_conditional_structure.js](./4_conditional_structure.js) introduit les conditions.
+
+### `if` / `else`
+
+```js
+let v = ''
+
+if (v) {
+    console.log('🧀')
+} else {
+    console.log('🫒')
+    console.log('🥚')
+}
+```
+
+### Opérateur ternaire
+
+```js
+let age = 44
+let age_type = age < 18 ? 'Mineur' : 'Majeur'
+console.log(age_type)
+```
+
+### Opérateurs logiques courts
+
+```js
+let nom = null
+console.log(nom ?? 'Nom n\'est pas défini')
+```
+
+On a aussi vu :
+
+- `&&`
+- `||`
+- `??`
+- les valeurs truthy / falsy
+
+## Chapitre 6 : Exercices du cours
+
+Les exercices abordés incluent :
+
+- calcul de l’âge
+- année bissextile
+- numéro de jour de la semaine
+- logique conditionnelle plus avancée
+
+## Conclusion
+
+Ce cours a permis de couvrir les bases de JavaScript :
+
+- affichage dans la console
+- variables et types
+- opérations mathématiques
+- dates
+- conditions et logique
+
+La prochaine étape logique sera :
 
 - les boucles (`for`, `while`)
 - les fonctions
-- les tableaux (`array`)
+- les tableaux
 - les objets

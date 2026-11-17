@@ -1,27 +1,26 @@
-﻿# JavaScript - Cours complet
+﻿# JavaScript - Cours complet par fichiers
 
-## Chapitre 1 — Premier script
+Ce document reprend le cours dans l’ordre réel des exercices :
 
-### Objectif
-Découvrir la syntaxe de base et vérifier que le code JavaScript s’exécute.
+1. [1_hello.js](./1_hello.js)
+2. [2_variables.js](./2_variables.js)
+3. [3_date.js](./3_date.js)
+4. [4_conditional_structure.js](./4_conditional_structure.js)
 
-### Exemple
+## Chapitre 1 : Premier script JavaScript
+
+Le premier fichier affiche un simple message dans la console.
+
 ```js
 console.log('hello world !!')
 ```
 
-### À retenir
-- `console.log()` affiche un message dans la console.
-- C’est le plus simple moyen de tester un script.
+L’objectif ici est de vérifier que le code exécute bien et d’introduire la syntaxe minimale de JavaScript.
 
----
+## Chapitre 2 : Les variables
 
-## Chapitre 2 — Les variables
+Une variable sert à stocker une valeur.
 
-### Objectif
-Comprendre comment stocker une valeur et savoir quel type elle a.
-
-### Exemple
 ```js
 let ma_super_variable
 console.log(ma_super_variable) // undefined
@@ -30,12 +29,8 @@ ma_super_variable = 42
 console.log(ma_super_variable) // 42
 ```
 
-### Notions à retenir
-- `let` permet de déclarer une variable.
-- Une variable non assignée vaut `undefined`.
-- On peut modifier sa valeur plus tard.
+### Déclaration et types
 
-### Types de base vus
 ```js
 let une_autre_variable = 'Khun LY'
 let un_booleen = true
@@ -44,30 +39,38 @@ console.log(typeof(une_autre_variable)) // string
 console.log(typeof(un_booleen)) // boolean
 ```
 
+On a vu plusieurs types :
+
+- `string`
+- `number`
+- `boolean`
+- `undefined`
+- `null`
+- `NaN`
+
 ### Valeurs falsy
+
 ```js
 console.log(!!0) // false
 console.log(!!42) // true
 console.log(!!NaN) // false
 ```
 
-### Exercice
-Définir une variable `nom`, puis afficher son type avec `typeof()`.
+Les valeurs falsy comprennent :
 
-### Correction
-```js
-let nom = 'Khun'
-console.log(typeof(nom)) // string
-```
+- `0`
+- `''`
+- `false`
+- `undefined`
+- `null`
+- `NaN`
 
----
+## Chapitre 3 : Les opérateurs et le formatage
 
-## Chapitre 3 — Opérateurs et conversions
+Le fichier [2_variables.js](./2_variables.js) contient les bases de la logique JavaScript.
 
-### Objectif
-Savoir effectuer des calculs, comparer des valeurs et convertir des données.
+### Opérations arithmétiques
 
-### Opérateurs arithmétiques
 ```js
 console.log(42 + 41) // 83
 console.log(42 - 41) // 1
@@ -78,6 +81,7 @@ console.log(2 ** 3) // 8
 ```
 
 ### Arrondis
+
 ```js
 let n = 27 / 2
 console.log(Math.round(n)) // 14
@@ -85,19 +89,27 @@ console.log(Math.floor(n)) // 13
 console.log(Math.ceil(n)) // 14
 ```
 
-### Concaténation
+### Incrémentation
+
 ```js
-console.log('hello' + 'world !') // helloworld !
-console.log('1' + 42) // 142
+let v1 = 42
+v1++
+console.log(v1) // 43
+
+v1 += 4
+console.log(v1) // 47
 ```
 
-### Template strings
+### Concaténation et template strings
+
 ```js
 let nom = 'Khun'
-console.log(`Bonjour ${nom}`)
+console.log('☺' + nom + '♥')
+console.log(`☺${nom}♥`)
 ```
 
 ### Conversion
+
 ```js
 let v2 = '42'
 console.log(parseInt(v2) + 17) // 59
@@ -107,19 +119,10 @@ let pi = 3.1415
 console.log(pi.toFixed(2)) // 3.14
 ```
 
-### À retenir
-- `parseInt()` transforme une chaîne en nombre.
-- `toFixed()` formate un nombre avec un nombre de décimales.
-- Les backticks permettent d’écrire des chaînes dynamiques.
+## Chapitre 4 : Les dates
 
----
+Le fichier [3_date.js](./3_date.js) permet de manipuler une date et de calculer des écarts entre dates.
 
-## Chapitre 4 — Les dates
-
-### Objectif
-Manipuler les dates et calculer rapidement des écarts en temps.
-
-### Exemple
 ```js
 let date = new Date()
 console.log(date)
@@ -127,6 +130,7 @@ console.log(date.toLocaleString('fr-BE'))
 ```
 
 ### Méthodes importantes
+
 ```js
 let annif = new Date(1982, 4, 6)
 console.log(annif.getDate())
@@ -135,31 +139,26 @@ console.log(annif.getFullYear())
 console.log(annif.getDay())
 ```
 
-### Exercice
-Créer une date correspondant à l’anniversaire d’un voisin, puis calculer son âge approximatif.
+On a aussi vu :
 
-### Correction
-```js
-let annif = new Date(1998, 10, 24)
-let today = new Date()
-let current_year = today.getFullYear()
+- `getDate()`
+- `getMonth()`
+- `getFullYear()`
+- `getDay()`
+- `setDate()`
 
-console.log(`Votre voisin a ${current_year - annif.getFullYear()} ans`)
-```
+### Exercices du fichier
 
-### À retenir
-- `new Date()` crée une date.
-- `getFullYear()`, `getMonth()`, `getDate()` permettent d’extraire des informations.
-- `setDate()` modifie la date.
+- calcul approximatif de l’âge
+- calcul du nombre de jours avant l’anniversaire
+- calcul du temps restant avant la pause
 
----
+## Chapitre 5 : Les structures conditionnelles
 
-## Chapitre 5 — Les structures conditionnelles
+Le fichier [4_conditional_structure.js](./4_conditional_structure.js) introduit le cœur de la logique de programmation.
 
-### Objectif
-Prendre des décisions selon des conditions.
+### `if` / `else`
 
-### Exemple de base
 ```js
 let v = ''
 
@@ -171,64 +170,46 @@ if (v) {
 }
 ```
 
-### Valeurs vraies et fausses
-Les valeurs suivantes sont fausses en JavaScript :
-
-- `0`
-- `''`
-- `false`
-- `null`
-- `undefined`
-- `NaN`
-
 ### Opérateur ternaire
+
 ```js
 let age = 44
 let age_type = age < 18 ? 'Mineur' : 'Majeur'
 console.log(age_type)
 ```
 
-### `&&`, `||`, `??`
+### `??` et coalescing
+
 ```js
 let nom = null
 console.log(nom ?? 'Nom n\'est pas défini')
 ```
 
-### Exercice
-Écrire une condition pour afficher si une année est bissextile.
+### Exercices du fichier
 
-### Correction
-```js
-let annee = 2000
+- année bissextile
+- calcul de l’âge selon l’anniversaire
+- récupération du jour de la semaine
+- logique conditionnelle avancée
 
-if ((annee % 4 === 0 && annee % 100 !== 0) || annee % 400 === 0) {
-    console.log('bissextile')
-} else {
-    console.log('pas bissextile')
-}
-```
+## Chapitre 6 : Ce qu’on a appris
 
-### À retenir
-- `if` permet de tester une condition.
-- Le ternaire est une version courte.
-- `??` sert à gérer `null` et `undefined`.
+Au terme de cette séance, nous avons vu :
 
----
+- le fonctionnement de base de JavaScript
+- les variables et les types
+- les opérateurs mathématiques et logiques
+- les conversions de types
+- le formatage des valeurs
+- l’objet `Date`
+- les conditions et la logique booléenne
 
-## Synthèse
+## Chapitre 7 : Prochaine étape
 
-Au terme de cette séquence, on sait :
-
-- afficher des informations dans la console
-- déclarer des variables et connaître leurs types
-- effectuer des calculs
-- manipuler des chaînes de caractères
-- travailler avec des dates
-- prendre des décisions avec des conditions
-
-## Prochaine étape du cours
+La suite logique du cours est :
 
 - les boucles (`for`, `while`)
 - les fonctions
 - les tableaux
 - les objets
+- les projets plus concrets
