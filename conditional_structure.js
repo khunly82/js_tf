@@ -52,10 +52,10 @@ console.log(nom ?? 'Nom n\'est pas défini')
 // 1900 -> pas bissexctile
 // 2000 -> bissexctile
 
-// créer une structure conditionnelle qui affichere
+// créer une structure conditionnelle qui affichera
 // bissexctile / pas bissexctile en fonction de l'année
 
-// recupérer le jour de la semaine du jour et afficher
+// recupérer le jour de la semaine et afficher
 // le jour en francais
 
 // Bonus: vérifier si un registre nationnal belge est valide
