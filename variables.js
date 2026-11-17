@@ -134,6 +134,13 @@ console.log(0 == false) // true
 console.log('42' === 42) // false
 console.log(0 === false) // false
 
+// opérateurs logiques AND et OR
+console.log(false && true) // false
+console.log(false || true) // true
+
+let v = true
+v && console.log('Coucou')
+
 // conversion string -> nombre
 
 let v2 = '42'
