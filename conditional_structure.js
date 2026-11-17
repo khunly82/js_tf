@@ -55,5 +55,8 @@ console.log(nom ?? 'Nom n\'est pas défini')
 // créer une structure conditionnelle qui affichere
 // bissexctile / pas bissexctile en fonction de l'année
 
+// recupérer le jour de la semaine du jour et afficher
+// le jour en francais
+
 // Bonus: vérifier si un registre nationnal belge est valide
 // 82050620316 est valide car 97 - (820506203 % 97) = 16
