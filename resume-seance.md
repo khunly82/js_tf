@@ -1,8 +1,17 @@
-# JavaScript - Chapitres de base
+# JavaScript - Cours de base et structures conditionnelles
 
-## Chapitre 1 : Les variables
+Ce cours reprend les notions déjà vues et complète la base avec les structures conditionnelles, notamment les `if`, les ternaires, les opérateurs logiques courts et la gestion des valeurs nulles.
 
-Une variable est un conteneur qui permet de stocker une donnée pour la réutiliser plus tard.
+## Fichiers du cours
+
+- [hello.js](./hello.js) : premier script JavaScript.
+- [variables.js](./variables.js) : types, variables, opérateurs de calcul et conversion.
+- [date.js](./date.js) : manipulation des dates.
+- [conditional_structure.js](./conditional_structure.js) : logique conditionnelle et tests booléens.
+
+## Chapitre 1 : Les variables et les types
+
+Les variables servent à conserver des données dans le programme.
 
 ```js
 let ma_super_variable
@@ -12,191 +21,209 @@ ma_super_variable = 42
 console.log(ma_super_variable) // 42
 ```
 
-### Exemple de variables
+On a aussi testé :
 
 ```js
-let une_autre_variable = 'Khun LY'
+let nom = 'Khun LY'
 let un_booleen = true
 ```
 
-Dans cette séance, nous avons vu les types suivants :
+Les principaux types rencontrés sont :
 
 - `string`
 - `number`
 - `boolean`
 - `undefined`
+- `null`
 
-Pour vérifier le type d’une valeur, on utilise `typeof()` :
+On peut vérifier le type avec :
 
 ```js
 console.log(typeof(ma_super_variable)) // number
-console.log(typeof(une_autre_variable)) // string
+console.log(typeof(nom)) // string
 console.log(typeof(un_booleen)) // boolean
 ```
 
-## Chapitre 2 : Les opérateurs
+## Chapitre 2 : Les conditions
 
-### Opérations arithmétiques
-
-```js
-console.log(42 + 41) // 83
-console.log(42 - 41) // 1
-console.log(42 * 2) // 84
-console.log(42 / 2) // 21
-console.log(3 % 2) // 1
-```
-
-### Opérateurs d’incrémentation
+Les conditions permettent d’exécuter un bloc de code seulement si une condition est vraie.
 
 ```js
-let v1 = 42
-v1++
-console.log(v1) // 43
+let v = ''
 
-v1 += 4
-console.log(v1) // 47
-
-v1--
-console.log(v1) // 46
+if (v) {
+    console.log('🧀')
+} else {
+    console.log('🫒')
+    console.log('🥚')
+}
 ```
 
-### Comparaisons
+### Valeurs vraies et fausses
+
+Les valeurs suivantes sont considérées comme fausses en JavaScript :
+
+- `0`
+- `''`
+- `false`
+- `null`
+- `undefined`
+- `NaN`
+
+C’est pour cela que `if (v)` est très utile : il vérifie si une valeur est “truthy” ou “falsy”.
+
+### Structure complète
+
+```js
+if (condition1) {
+    // code 1
+} else if (condition2) {
+    // code 2
+} else {
+    // code 3
+}
+```
+
+## Chapitre 3 : L’opérateur ternaire
+
+Le ternaire est une écriture plus courte pour une condition.
+
+```js
+let age = 44
+let age_type
+
+age_type =
+    age < 12 ? 'Enfant' :
+    age < 18 ? 'Ado' :
+    'Adulte'
+
+console.log(age_type)
+```
+
+La syntaxe est :
+
+```js
+condition ? valeur_si_vrai : valeur_si_faux
+```
+
+Il est particulièrement pratique pour remplacer un `if` simple.
+
+## Chapitre 4 : Les opérateurs logiques courts
+
+### `&&` (et)
+
+```js
+let v = 'bonjour'
+v && console.log('🧀')
+```
+
+Le code à droite ne s’exécute que si la condition de gauche est vraie.
+
+### `||` (ou)
+
+```js
+let nom = null
+console.log(nom || 'Nom n\'est pas défini')
+```
+
+`||` retourne la première valeur vraie, sinon la seconde.
+
+### `??` (nullish coalescing)
+
+```js
+let nom = null
+console.log(nom ?? 'Nom n\'est pas défini')
+```
+
+`??` est très utile pour gérer `null` et `undefined` sans considérer `0` ou `''` comme étant “vide”.
+
+## Chapitre 5 : Les opérateurs de comparaison
+
+On a vu plusieurs comparaisons :
 
 ```js
 console.log(42 == 42) // true
 console.log('42' == 42) // true
+console.log(0 == false) // true
+
 console.log('42' === 42) // false
+console.log(0 === false) // false
 ```
 
-On distingue :
+### À retenir
 
-- `==` : comparaison avec conversion implicite
-- `===` : comparaison stricte sans conversion
+- `==` compare avec conversion implicite
+- `===` compare la valeur et le type
 
-## Chapitre 3 : Les booléens et les valeurs falsy
+## Chapitre 6 : Les exercices proposés
 
-Les booléens servent à gérer des états logiques.
+### 1. Année bissextile
+
+Une année est bissextile si elle est divisible par 4, sauf si elle est divisible par 100, sauf si elle est divisible par 400.
 
 ```js
-console.log(!false) // true
-console.log(!!true) // true
-console.log(!!0) // false
-console.log(!!42) // true
+let annee = 2000
+
+if ((annee % 4 === 0 && annee % 100 !== 0) || annee % 400 === 0) {
+    console.log('bissextile')
+} else {
+    console.log('pas bissextile')
+}
 ```
 
-Les principales valeurs falsy sont :
+### 2. Jour de la semaine
 
-- `0`
-- `false`
-- `''`
-- `undefined`
-- `null`
-- `NaN`
-
-## Chapitre 4 : Les chaînes de caractères
-
-Une chaîne est un texte encadré par des guillemets ou des apostrophes.
-
-```js
-let nom = 'Khun'
-console.log('Bonjour ' + nom)
-console.log(`Bonjour ${nom}`)
-```
-
-### Template literals
-
-Les backticks permettent d’insérer directement le contenu d’une variable :
-
-```js
-console.log(`☺${nom}♥`)
-```
-
-## Chapitre 5 : Les conversions de type
-
-JavaScript sait convertir certaines valeurs automatiquement ou via des méthodes.
-
-```js
-let v2 = '42'
-console.log(v2 + 17) // 4217
-console.log(parseInt(v2) + 17) // 59
-console.log(+v2 + 17) // 59
-```
-
-### Autres conversions
-
-```js
-let pi = 3.1415
-console.log(pi.toFixed(2)) // 3.14
-```
-
-On a aussi vu que `toString()` permet de convertir un nombre en chaîne.
-
-## Chapitre 6 : Les arrondis et le formatage
-
-```js
-let n = 27 / 2
-console.log(Math.round(n)) // 14
-console.log(Math.floor(n)) // 13
-console.log(Math.ceil(n)) // 14
-```
-
-Le `padStart()` permet d’ajouter des zéros devant une valeur :
-
-```js
-console.log('5'.padStart(2, '0')) // 05
-```
-
-Cela est très pratique pour afficher une heure ou une date sous forme `HH:MM:SS`.
-
-## Chapitre 7 : Les dates
-
-L’objet `Date` est utilisé pour manipuler la date et l’heure.
+On a vu que l’on peut récupérer le jour actuel avec `getDay()` et ensuite afficher un libellé en français.
 
 ```js
 let date = new Date()
-console.log(date)
-console.log(date.toLocaleString('fr-BE'))
+let jour = date.getDay()
 ```
 
-### Accéder à des éléments de date
+### 3. Calcul de l’âge
+
+Le calcul de l’âge peut être amélioré en vérifiant si l’anniversaire est déjà passé dans l’année en cours.
 
 ```js
-let annif = new Date(1982, 4, 6)
-console.log(annif.getDate())
-console.log(annif.getMonth())
-console.log(annif.getFullYear())
-console.log(annif.getDay())
+let aujourdhui = new Date()
+let anniversaire = new Date(1982, 4, 6)
 ```
 
-### Modifier une date
+### 4. Registre national belge
 
-```js
-let date_emprunt = new Date(2027, 1, 24)
-date_emprunt.setDate(date_emprunt.getDate() + 21)
-console.log(date_emprunt)
-```
+C’est un exercice avancé de logique conditionnelle et de calcul. L’idée est de vérifier un format ou une règle selon la date et les calculs de modulo.
 
-## Chapitre 8 : Ce que nous avons appris
+## Chapitre 7 : Les bases déjà vues avant les conditions
 
-Nous avons abordé les bases de JavaScript :
+Avant d’aborder les conditions, on a aussi travaillé sur :
 
-- déclarer des variables
-- manipuler les types de données
-- utiliser les opérateurs
-- comparer des valeurs
-- travailler avec des chaînes de caractères
-- convertir des données
-- formater des nombres
-- gérer des dates
+- les variables
+- les types de données
+- les opérateurs arithmétiques
+- les chaînes de caractères
+- les conversions (`parseInt`, `+x`, `toString`, `toFixed`)
+- les arrondis (`Math.round`, `Math.floor`, `Math.ceil`)
+- les objets `Date`
+
+## Chapitre 8 : Ce qu’on a appris
+
+À la fin de cette séance, on sait :
+
+- créer et utiliser des variables
+- vérifier les valeurs vraies ou fausses
+- utiliser `if`, `else if` et `else`
+- écrire des conditions courtes avec le ternaire
+- utiliser `&&`, `||` et `??`
+- appliquer des logiques de calcul sur des cas concrets
+- structurer un raisonnement en fonction des données
 
 ## Chapitre 9 : Prochaine étape
 
-Les notions à venir sont les suivantes :
+La suite du cours pourra aborder :
 
-- les conditions (`if`, `else`)
 - les boucles (`for`, `while`)
 - les fonctions
-- les tableaux
+- les tableaux (`array`)
 - les objets
+- les exercices plus avancés avec logique métier et dates
 
-Ces chapitres permettront de passer des bases à la création de programmes plus complets.

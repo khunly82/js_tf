@@ -1,16 +1,17 @@
 # JavaScript - Cours de base
 
-Ce dossier contient une introduction aux bases du JavaScript, organisée en chapitres pour faciliter l’apprentissage.
+Ce dossier regroupe les notions vues en cours : variables, conditions, opérateurs logiques, et calculs conditionnels.
 
 ## Fichiers du cours
 
-- [hello.js](./hello.js) : premier script, affichage dans la console.
-- [variables.js](./variables.js) : variables, types, opérateurs et logique de base.
-- [date.js](./date.js) : manipulation des dates et des calculs de temps.
+- [hello.js](./hello.js) : premier script JavaScript.
+- [variables.js](./variables.js) : variables, types, opérations et conversions.
+- [date.js](./date.js) : manipulation des dates.
+- [conditional_structure.js](./conditional_structure.js) : structures conditionnelles, ternaires, `&&`, `||`, `??`.
 
 ## Chapitre 1 : Les variables
 
-Une variable sert à stocker une information afin de la réutiliser dans le programme.
+Une variable permet de stocker une donnée afin de la réutiliser dans le programme.
 
 ```js
 let ma_super_variable
@@ -20,28 +21,23 @@ ma_super_variable = 42
 console.log(ma_super_variable) // 42
 ```
 
-### Déclaration et affectation
-
-- `let` permet de déclarer une variable.
-- Une variable peut être déclarée puis affectée plus tard.
-- Si elle n’a pas encore de valeur, elle vaut `undefined`.
-
 ### Types de base
 
 ```js
-let nom = 'Khun'
-let age = 42
+let nom = 'Khun LY'
+let age = 44
 let estConnecte = true
 ```
 
-Les types vus :
+On a vu les types suivants :
 
 - `string`
 - `number`
 - `boolean`
 - `undefined`
+- `null`
 
-Pour vérifier un type, on utilise `typeof()` :
+Vérification avec `typeof()` :
 
 ```js
 console.log(typeof(age)) // number
@@ -49,176 +45,167 @@ console.log(typeof(nom)) // string
 console.log(typeof(estConnecte)) // boolean
 ```
 
-## Chapitre 2 : Les opérateurs
+## Chapitre 2 : Les structures conditionnelles
 
-### Opérateurs arithmétiques
-
-```js
-console.log(42 + 41) // 83
-console.log(42 - 41) // 1
-console.log(42 * 2) // 84
-console.log(42 / 2) // 21
-console.log(3 % 2) // 1
-console.log(2 ** 3) // 8
-```
-
-### Opérateurs d’incrémentation
+Une condition permet de décider quoi faire selon une situation.
 
 ```js
-let v1 = 42
-v1++
-console.log(v1) // 43
+let v = ''
 
-v1 += 4
-console.log(v1) // 47
-
-v1--
-console.log(v1) // 46
+if (v) {
+    console.log('🧀')
+} else {
+    console.log('🫒')
+    console.log('🥚')
+}
 ```
 
-### Opérateurs de comparaison
+### Valeurs vraies et fausses
 
-```js
-console.log(45 < 2) // false
-console.log(42 == 42) // true
-console.log('42' == 42) // true
-console.log('42' === 42) // false
-```
-
-- `==` compare en convertissant les types
-- `===` compare aussi le type
-
-## Chapitre 3 : Les valeurs booléennes et les valeurs falsy
-
-Certaines valeurs sont considérées comme fausses dans un contexte logique.
-
-```js
-console.log(!false) // true
-console.log(!!0) // false
-console.log(!!42) // true
-console.log(!!NaN) // false
-```
-
-Les valeurs falsy courantes :
+En JavaScript, certaines valeurs sont considérées comme fausses :
 
 - `0`
-- `false`
 - `''`
-- `undefined`
+- `false`
 - `null`
+- `undefined`
 - `NaN`
 
-## Chapitre 4 : Les chaînes de caractères
+C’est pourquoi `if (v)` est une manière très simple de tester si une variable contient une valeur utile.
 
-Les chaînes de caractères peuvent être concaténées ou interpolées.
-
-```js
-let nom = 'Khun'
-console.log('Bonjour ' + nom)
-console.log(`Bonjour ${nom}`)
-```
-
-### Concaténation
+### Version complète
 
 ```js
-console.log('hello' + 'world !')
-console.log('1' + 42) // 142
+if (cond1) {
+    // faire qque chose
+} else if (cond2) {
+    // autre cas
+} else {
+    // cas final
+}
 ```
 
-### Template strings
+## Chapitre 3 : Les opérateurs ternaires
 
-Les backticks permettent d’injecter une variable directement dans une chaîne :
+Le ternaire permet d’écrire une condition de manière courte.
 
 ```js
-console.log(`☺${nom}♥`)
+let age = 44
+let age_type
+
+age_type =
+    age < 12 ? 'Enfant' :
+    age < 18 ? 'Ado' :
+    'Adulte'
+
+console.log(age_type) // Adulte
 ```
 
-## Chapitre 5 : Les conversions
-
-JavaScript permet de convertir des valeurs selon les besoins.
-
-### Conversion de chaîne en nombre
+Le principe est :
 
 ```js
-let v2 = '42'
-console.log(parseInt(v2) + 17) // 59
-console.log(+v2 + 17) // 59
+condition ? valeur_si_vrai : valeur_si_faux
 ```
 
-### Conversion en chaîne
+## Chapitre 4 : Les opérateurs logiques courts
+
+### `&&` (et)
 
 ```js
-let v5 = 42
-console.log(v5.toString() + 1)
+v && console.log('🧀')
 ```
 
-### Arrondi
+Cela n’exécute `console.log()` que si `v` est vrai.
+
+### `||` (ou)
 
 ```js
-let n = 27 / 2
-console.log(Math.round(n)) // 14
-console.log(Math.floor(n)) // 13
-console.log(Math.ceil(n)) // 14
+let nom = null
+console.log(nom || 'Nom n\'est pas défini')
 ```
 
-## Chapitre 6 : Le formatage des nombres
+L’opérateur `||` retourne la première valeur vraie, sinon la seconde.
 
-On peut formatter les valeurs pour obtenir un affichage plus propre.
+### `??` (nullish coalescing)
 
 ```js
-console.log('5'.padStart(2, '0')) // 05
+let nom = null
+console.log(nom ?? 'Nom n\'est pas défini')
 ```
 
-Ce système est très utile pour afficher des heures, des minutes ou des secondes au format `00`.
+`??` sert à gérer les valeurs `null` et `undefined` sans prendre en compte les autres valeurs fausses comme `0` ou `''`.
 
-## Chapitre 7 : Les dates
+## Chapitre 5 : Les exercices et exemples du cours
 
-JavaScript contient un objet `Date` pour gérer les dates et l’heure.
+### 1. Calcul de l’âge d’un voisin
+
+On peut améliorer le calcul de l’âge en vérifiant si l’anniversaire est déjà passé dans l’année courante.
+
+```js
+let dateAujourdhui = new Date()
+let anniversaire = new Date(1982, 4, 6)
+```
+
+Le but est de calculer si l’anniversaire est déjà passé ou non avant de déterminer l’âge exact.
+
+### 2. Année bissextile
+
+Une année est bissextile si :
+
+- elle est divisible par 4,
+- mais pas divisible par 100,
+- sauf si elle est divisible par 400.
+
+Exemples :
+
+- 1997 → non bissextile
+- 1996 → bissextile
+- 1900 → non bissextile
+- 2000 → bissextile
+
+Exemple de structure :
+
+```js
+let annee = 2000
+
+if ((annee % 4 === 0 && annee % 100 !== 0) || annee % 400 === 0) {
+    console.log('bissextile')
+} else {
+    console.log('pas bissextile')
+}
+```
+
+### 3. Jour de la semaine
+
+On peut récupérer le jour de la semaine et l’afficher en français.
 
 ```js
 let date = new Date()
-console.log(date)
-console.log(date.toLocaleString('fr-BE'))
+let jour = date.getDay()
 ```
 
-### Obtenir des éléments d’une date
+### 4. Numéro national belge
 
-```js
-let annif = new Date(1982, 4, 6)
-console.log(annif.getDate())
-console.log(annif.getMonth())
-console.log(annif.getFullYear())
-console.log(annif.getDay())
-```
+Le registre national belge est validé selon une logique spécifique. C’est un exercice de logique conditionnelle et de calcul mathématique.
 
-### Modifier une date
+## Chapitre 6 : Ce qu’on a appris
 
-```js
-let date_emprunt = new Date(2027, 1, 24)
-date_emprunt.setDate(date_emprunt.getDate() + 21)
-console.log(date_emprunt)
-```
+À la fin de ce module, on sait :
 
-## Chapitre 8 : Ce qu’on a appris
+- déclarer des variables et manipuler leurs valeurs
+- tester des conditions avec `if`, `else if`, `else`
+- écrire des conditions courtes avec le ternaire
+- exploiter `&&`, `||`, `??`
+- distinguer les valeurs vraies et fausses
+- écrire des algorithmes conditionnels simples
 
-À la fin de cette séance, on sait :
+## Chapitre 7 : Prochaine étape
 
-- créer et utiliser des variables
-- identifier les principaux types de données
-- utiliser les opérateurs de calcul et de comparaison
-- comprendre les valeurs vrai / faux
-- manipuler les chaînes de caractères
-- convertir des valeurs
-- formater des nombres et des dates
+La suite du cours abordera :
 
-## Chapitre 9 : Suite du cours
-
-La suite logique du cours abordera :
-
-- les conditions (`if`, `else`)
 - les boucles (`for`, `while`)
 - les fonctions
-- les tableaux (`array`)
+- les tableaux
 - les objets
+- les méthodes de manipulation de chaînes et de dates
 
-C’est la prochaine étape pour passer des bases à la programmation plus avancée.
